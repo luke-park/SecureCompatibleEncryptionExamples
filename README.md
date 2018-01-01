@@ -41,7 +41,7 @@ strings.  The `password` parameter is fed through PBKDF2 first.
 compatible.
 
 ## Test Vector
-I used the following result of `encryptString` as a test vector.
+The following result of `encryptString` was used as a test vector.
 > +0ACFp6Q6l7ZruERTYgJpElm0aI/E6spg1fVmHNzzaBhZKmqx+5no0ieoVK0h/Fhpw==
 
 When decrypted using the password "world", the result should be "hello".  I
