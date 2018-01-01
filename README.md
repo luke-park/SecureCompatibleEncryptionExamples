@@ -52,3 +52,4 @@ with the existing examples.
 - Java: No dependencies, requires Java 8 JRE.
 - NodeJS: No dependencies.
 - Golang: Requires `golang.org/x/crypto/pbkdf2`, installed using `go get`.
+- C#: Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/) or view [on the web](http://www.bouncycastle.org/csharp/).
