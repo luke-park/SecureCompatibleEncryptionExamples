@@ -23,9 +23,7 @@ examples are shown using AES-128, they can be trivially changed to 256-bit AES
 by changing the `ALGORITHM_KEY_SIZE` parameter.
 
 ## Compatibility
-All of the methods in all of the code examples are all compatible with each
-other.  That is, encrypted data from the Java example can be decrypted in the
-Golang or NodeJS example, and vice versa.
+Every example shown here is compatible across platforms and/or languages.  The result of `encryptString` in any language can be decrypted by `decryptString` in any language.  Please do not submit pull requests for examples that are not compatible with the existing examples.
 
 ## Methods
 Each example exposes 4 methods with signatures that are roughly equivalent to
