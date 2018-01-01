@@ -49,7 +49,7 @@ very much welcome examples in other languages provided they keep compatibility
 with the existing examples.
 
 ## Dependencies
-- Java: No dependencies, requires Java 8 JRE.
-- NodeJS: No dependencies.
-- Golang: Requires `golang.org/x/crypto/pbkdf2`, installed using `go get`.  View on GoDoc [here](https://godoc.org/golang.org/x/crypto/pbkdf2).
-- C#: Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/) or view [on the web](http://www.bouncycastle.org/csharp/).
+- **Java**: No dependencies, requires Java 8 JRE.
+- **NodeJS**: No dependencies.
+- **Golang**: Requires `golang.org/x/crypto/pbkdf2`, installed using `go get`.  View on GoDoc [here](https://godoc.org/golang.org/x/crypto/pbkdf2).
+- **C#**: Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/) or view [on the web](http://www.bouncycastle.org/csharp/).
