@@ -40,6 +40,9 @@ strings.  The `password` parameter is fed through PBKDF2 first.  `password` can 
 **NOTE**: Because of the use of PBKDF2, the binary vs string methods are **not**
 compatible.
 
+## OpenSSL CLI Compatability
+Note that while OpenSSL supports `AES-128-GCM` as an algorithm, the OpenSSL CLI tool does not properly implement `AES-128-GCM` and as such it cannot be used to produce or consume plaintexts/ciphertexts that are compatible with the examples in this repository.
+
 ## Test Vector
 The following result of `encryptString` was used as a test vector.
 > +0ACFp6Q6l7ZruERTYgJpElm0aI/E6spg1fVmHNzzaBhZKmqx+5no0ieoVK0h/Fhpw==
