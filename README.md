@@ -2,8 +2,8 @@
 
 # Secure Compatible Encryption Examples
 This repository was created to address the ever-growing number of poor
-encryption code examples that float about the internet.  I intend on expanding
-this repository over time to include examples in more languages.
+encryption code examples that float about the internet.  This repository will
+expand over time to include examples in more languages.
 
 The code provided in these examples is intended to be secure by industry
 standards as of *1st January 2018*.  Reviewing of these examples is encouraged,
@@ -44,12 +44,13 @@ compatible.
 The following result of `encryptString` was used as a test vector.
 > +0ACFp6Q6l7ZruERTYgJpElm0aI/E6spg1fVmHNzzaBhZKmqx+5no0ieoVK0h/Fhpw==
 
-When decrypted using the password "world", the result should be "hello".  I
-very much welcome examples in other languages provided they keep compatibility
-with the existing examples.
+When decrypted using the password "world", the result should be "hello".
+Examples in other languages are very much welcome provided they keep
+compatibility with the existing examples.
 
 ## Dependencies
 - **Java**: No dependencies, requires Java 8 JRE.
 - **NodeJS**: No dependencies.
 - **Golang**: Requires `golang.org/x/crypto/pbkdf2`, installed using `go get`.  View on GoDoc [here](https://godoc.org/golang.org/x/crypto/pbkdf2).
 - **C#**: Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/) or view [on the web](http://www.bouncycastle.org/csharp/).
+- **PHP**: Requires at least PHP 7.1, no actual dependencies.
