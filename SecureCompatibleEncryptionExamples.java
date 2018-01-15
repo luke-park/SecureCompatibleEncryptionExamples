@@ -17,7 +17,7 @@ import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class SecureCompatibleEncryptionExample {
+public class SecureCompatibleEncryptionExamples {
 
 	private final static String ALGORITHM_NAME = "AES/GCM/NoPadding";
 	private final static int ALGORITHM_NONCE_SIZE = 12;

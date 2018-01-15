@@ -57,3 +57,4 @@ compatibility with the existing examples.
 - **Golang**: Requires `golang.org/x/crypto/pbkdf2`, installed using `go get`.  View on GoDoc [here](https://godoc.org/golang.org/x/crypto/pbkdf2).
 - **C#**: Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/) or view [on the web](http://www.bouncycastle.org/csharp/).
 - **PHP**: Requires at least PHP 7.1, no actual dependencies.
+- **Swift**: Requires Swift 4.0 and the [SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.
