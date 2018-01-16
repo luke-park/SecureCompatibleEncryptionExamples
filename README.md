@@ -56,9 +56,11 @@ The following strings are the results of `encryptString`.  If your implementatio
 |||`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
 
 ## Dependencies
-- **Java**: No dependencies, requires Java 8 JRE.
-- **NodeJS**: No dependencies.
-- **Golang**: Requires `golang.org/x/crypto/pbkdf2`, installed using `go get`.  View on GoDoc [here](https://godoc.org/golang.org/x/crypto/pbkdf2).
-- **C#**: Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/) or view [on the web](http://www.bouncycastle.org/csharp/).
-- **PHP**: Requires at least PHP 7.1, no actual dependencies.
-- **Swift**: Requires Swift 4.0 and the [SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.
+|Language|Minimum Version|Dependencies|
+|--------|---------------|------------|
+|Java|Java 8 JRE||
+|NodeJS|NodeJS 4.0.0+||
+|Golang|Golang 1.9|`golang.org/x/crypto/pbkdf2`|
+|C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
+|PHP|PHP 7.1||
+|Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
