@@ -59,7 +59,7 @@ The following strings are the results of `encryptString`.  If your implementatio
 |Language|Minimum Version|Dependencies|
 |--------|---------------|------------|
 |Java|Java 8 JRE||
-|NodeJS|NodeJS 4.0.0+||
+|JavaScript|NodeJS 4.0.0+||
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
 |C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |PHP|PHP 7.1||
