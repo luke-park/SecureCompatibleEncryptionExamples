@@ -60,7 +60,7 @@ The following strings are the results of `encryptString`.  If your implementatio
 |--------|---------------|------------|
 |Java|Java 8 JRE||
 |NodeJS|NodeJS 4.0.0+||
-|Golang|Golang 1.9|`golang.org/x/crypto/pbkdf2`|
+|Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
 |C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |PHP|PHP 7.1||
 |Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
