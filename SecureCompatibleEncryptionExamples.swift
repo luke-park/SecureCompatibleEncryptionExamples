@@ -82,7 +82,7 @@ public class SecureCompatibleEncryptionExamples {
         // Decrypt and return result.
         return String(data: try decrypt(ciphertextAndNonce: ciphertextAndNonce, key: key), encoding: String.Encoding.utf8)!
     }
-
+    
     public static func encrypt(plaintext: Data, key: Data) throws -> Data {
         // Generate a 96-bit nonce using a CSPRNG.
         var nonceBytes: [UInt8] = [UInt8](repeating: 0, count: algorithmNonceSize)
@@ -92,7 +92,7 @@ public class SecureCompatibleEncryptionExamples {
         let nonce: Data = Data(bytes: nonceBytes)
         
         // Create the cipher instance and initialize.
-        let gcm: SwiftGCM = try SwiftGCM(key: key, nonce: nonce)
+        let gcm: SwiftGCM = try SwiftGCM(key: key, nonce: nonce, tagSize: 16)
         
         // Encrypt and prepend nonce.
         let ciphertext: Data = try gcm.encrypt(auth: nil, plaintext: plaintext)
@@ -110,7 +110,7 @@ public class SecureCompatibleEncryptionExamples {
         let ciphertext: Data = ciphertextAndNonce[ciphertextAndNonce.startIndex + algorithmNonceSize..<ciphertextAndNonce.startIndex + ciphertextAndNonce.count]
         
         // Create the cipher instance and initialize.
-        let gcm: SwiftGCM = try SwiftGCM(key: key, nonce: nonce)
+        let gcm: SwiftGCM = try SwiftGCM(key: key, nonce: nonce, tagSize: 16)
         
         // Decrypt and return result.
         return try gcm.decrypt(auth: nil, ciphertext: ciphertext)
