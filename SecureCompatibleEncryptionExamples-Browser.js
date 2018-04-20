@@ -58,7 +58,6 @@ function decryptString(base64CiphertextAndNonceAndSalt, password) {
 
 function encrypt(plaintext, key) {
     return new Promise((res, rej) => {
-
         // Generate a 96-bit nonce using a CSPRNG.
         let nonce = crypto.getRandomValues(new Uint8Array(ALGORITHM_NONCE_SIZE));
         let aesGcm = { name: ALGORITHM_NAME, iv: nonce };
@@ -83,7 +82,6 @@ function encryptWithCryptoKey(aesGcm, plaintext, cryptoKey) {
 
 function decrypt(ciphertextAndNonce, key) {
     return new Promise((res, rej) => {
-
         // Create buffers of the nonce and ciphertext.
         let nonce = ciphertextAndNonce.slice(0, ALGORITHM_NONCE_SIZE);
         let ciphertext = ciphertextAndNonce.slice(ALGORITHM_NONCE_SIZE);
