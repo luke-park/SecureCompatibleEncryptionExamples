@@ -60,7 +60,7 @@ The following strings are the results of `encryptString`.  If your implementatio
 |--------|---------------|------------|
 |Java|Java 8 JRE||
 |JavaScript (Node)|NodeJS 4.0.0+||
-|JavaScript (Browser)|Requires WebCrypto support|Uses [base64-js](https://github.com/beatgammit/base64-js)|
+|JavaScript (Browser)|Requires WebCrypto support|Requires [base64-js](https://github.com/beatgammit/base64-js)|
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
 |C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |PHP|PHP 7.1||
