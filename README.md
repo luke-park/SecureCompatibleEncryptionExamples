@@ -36,6 +36,19 @@ strings.  The `password` parameter is fed through PBKDF2 first.  `password` can 
 **NOTE**: Because of the use of PBKDF2, the binary vs string methods are **not**
 compatible.
 
+## Dependencies
+|Language|Minimum Version|Dependencies|
+|--------|---------------|------------|
+|Java|Java 8 JRE||
+|Kotlin|Java 8 JRE||
+|JavaScript (Node)|NodeJS 4.0.0+||
+|JavaScript (Browser)|N/A|Requires [base64-js](https://github.com/beatgammit/base64-js) and a browser that supports the Web Crypto API.|
+|Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
+|C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
+|Visual Basic .NET|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
+|PHP|PHP 7.1||
+|Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
+
 ## OpenSSL CLI Compatability
 Note that while OpenSSL supports `AES-128-GCM` as an algorithm, the OpenSSL CLI tool does not properly implement `AES-128-GCM` and as such it cannot be used to produce or consume plaintexts/ciphertexts that are compatible with the examples in this repository.
 
@@ -50,15 +63,3 @@ The following strings are the results of `encryptString`.  If your implementatio
 |vW1Qjb30mt|OziaxPFGYh|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|
 |9z19eFctoZ|gkLDY5mmzT|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|
 |||`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
-
-## Dependencies
-|Language|Minimum Version|Dependencies|
-|--------|---------------|------------|
-|Java|Java 8 JRE||
-|Kotlin|Java 8 JRE||
-|JavaScript (Node)|NodeJS 4.0.0+||
-|JavaScript (Browser)|N/A|Requires [base64-js](https://github.com/beatgammit/base64-js) and a browser that supports the Web Crypto API.|
-|Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
-|C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
-|PHP|PHP 7.1||
-|Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
