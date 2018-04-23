@@ -5,12 +5,8 @@ This repository was created to address the ever-growing number of poor
 encryption code examples that float about the internet.  This repository will
 expand over time to include examples in more languages.
 
-The code provided in these examples is intended to be secure by industry
-standards as of *1st January 2018*.  Reviewing of these examples is encouraged,
-any improvements are welcome, provided they contribute to the security of the
+Reviewing of these examples is encouraged and any improvements are welcome, provided they contribute to the security of the
 code.
-
-**WARNING**: The examples given in this repository are meant to demonstrate best-practice encryption techniques ***ONLY***.  The code layout, packaging and/or structure of the code may not be optimal or fitting for use.  The examples given are not meant to be drop-in code excerpts that you can use in your project, they are for demonstration purpose only.  You should carefully implement the examples manually in your own code as required, do not use them directly.
 
 ## Algorithms
 - **Encryption**: AES-128-GCM
