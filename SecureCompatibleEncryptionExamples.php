@@ -10,7 +10,7 @@ define("PBKDF2_ITERATIONS", 32767);
 
 function encryptString($plaintext, $password) {
     // Generate a 128-bit salt using a CSPRNG.
-    $salt = openssl_random_pseudo_bytes(PBKDF2_SALT_SIZE);
+    $salt = random_bytes(PBKDF2_SALT_SIZE);
 
     // Derive a key.
     $key = hash_pbkdf2(PBKDF2_NAME, $password, $salt, PBKDF2_ITERATIONS, ALGORITHM_KEY_SIZE, true);
@@ -36,7 +36,7 @@ function decryptString($base64CiphertextAndNonceAndSalt, $password) {
 
 function encrypt($plaintext, $key) {
     // Generate a 96-bit nonce using a CSPRNG.
-    $nonce = openssl_random_pseudo_bytes(ALGORITHM_NONCE_SIZE);
+    $nonce = random_bytes(ALGORITHM_NONCE_SIZE);
 
     // Encrypt and prepend nonce.
     $ciphertext = openssl_encrypt($plaintext, ALGORITHM_NAME, $key, OPENSSL_RAW_DATA, $nonce, $tag);
