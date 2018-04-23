@@ -33,10 +33,6 @@ function decryptString(base64CiphertextAndNonceAndSalt, password) {
     let nonce = ciphertextAndNonceAndSalt.slice(PBKDF2_SALT_SIZE, PBKDF2_SALT_SIZE + ALGORITHM_NONCE_SIZE);
     let ciphertext = ciphertextAndNonceAndSalt.slice(PBKDF2_SALT_SIZE + ALGORITHM_NONCE_SIZE);
     let aesGcm = { name: ALGORITHM_NAME, iv: nonce };
-    console.log(ciphertextAndNonceAndSalt);
-    console.log(salt);
-    console.log(nonce);
-    console.log(ciphertext);
 
     // Derive the key using PBKDF2.
     return crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"])
