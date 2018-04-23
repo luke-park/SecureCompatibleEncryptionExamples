@@ -44,6 +44,7 @@ compatible.
 |JavaScript (Node)|NodeJS 4.0.0+||
 |JavaScript (Browser)||Requires [base64-js](https://github.com/beatgammit/base64-js) and a browser that supports the Web Crypto API.|
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
+|Python|Tested on v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome), tested with v3.4.7.
 |C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |Visual Basic .NET|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |PHP|PHP 7.1||
