@@ -14,7 +14,7 @@ code.
 - **PBKDF2 Underlying Hash**: SHA-256
 
 AES with a 128-bit key was chosen due to the Java *Unlimited Strength Policy*
-that requires key sizes of no more than 128-bits due to US law.  While the
+that requires key sizes of no more than 128-bits due to cryptography export laws.  While the
 examples are shown using AES-128, they can be trivially changed to 256-bit AES
 by changing the `ALGORITHM_KEY_SIZE` (and in some cases, `ALGORITHM_NAME`) parameter.
 
