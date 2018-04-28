@@ -30,8 +30,7 @@ the following:
 - `byte[] decrypt(ciphertext: byte[], key: byte[])`
 
 As is expected, the `encrypt` and `decrypt` methods operate on and return raw
-binary data.  The `*string` methods, however, take string parameters and return
-strings.  The `password` parameter is fed through PBKDF2 first.  `password` can be of any length but `key` must be 128-bits in length.  You can change the AES key size by adjusting the `ALGORITHM_KEY_SIZE` parameter, and in some examples, the `ALGORITHM_NAME` parameter too.
+binary data.  The `*string` methods, however, take string parameters and return base64 encoded strings.  The `password` parameter is fed through PBKDF2 first.  `password` can be of any length but `key` must be 128-bits in length.  You can change the AES key size by adjusting the `ALGORITHM_KEY_SIZE` parameter, and in some examples, the `ALGORITHM_NAME` parameter too.
 
 **NOTE**: Because of the use of PBKDF2, the binary vs string methods are **not**
 compatible.
