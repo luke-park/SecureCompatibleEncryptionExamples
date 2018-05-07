@@ -53,7 +53,7 @@ compatible.
 Note that while OpenSSL supports `AES-128-GCM` as an algorithm, the OpenSSL CLI tool does not properly implement `AES-128-GCM` and as such it cannot be used to produce or consume plaintexts/ciphertexts that are compatible with the examples in this repository.
 
 ## Test Vectors
-The following strings are the results of `encryptString`.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the test vectors below, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
+If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the test vectors below, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
 
 | Plaintext | Password | Result |
 |-----------|----------|--------|
@@ -62,4 +62,3 @@ The following strings are the results of `encryptString`.  If your implementatio
 |NYzd53moLT|BZO8PUEysY|`SNQHdWnlcmJELLKewNTxBhzmJ1U+ChqKK5Kdvd/FSKssHW5b8y8SOrNVHdm78JUAYpGKlEUD`|
 |vW1Qjb30mt|OziaxPFGYh|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|
 |9z19eFctoZ|gkLDY5mmzT|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|
-|||`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
