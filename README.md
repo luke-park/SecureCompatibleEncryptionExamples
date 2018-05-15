@@ -50,9 +50,6 @@ compatible.
 |PHP|PHP 7.1||
 |Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
 
-## OpenSSL CLI Compatability
-Note that while OpenSSL supports `AES-128-GCM` as an algorithm, the OpenSSL CLI tool does not properly implement `AES-128-GCM` and as such it cannot be used to produce or consume plaintexts/ciphertexts that are compatible with the examples in this repository.
-
 ## Test Vectors
 The following strings are the results of `encryptString`.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the test vectors below, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
 
@@ -64,3 +61,54 @@ The following strings are the results of `encryptString`.  If your implementatio
 |vW1Qjb30mt|OziaxPFGYh|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|
 |9z19eFctoZ|gkLDY5mmzT|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|
 |<Empty String>|<Empty String>|`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
+
+## C Example
+The C example requires a bit more effort to understand and use properly due to varying buffer sizes with regard to base64 padding.  The example below shows how to use `crypt_string_get_length` to determine what buffer size you will need to allocate to store the result.
+```c
+#include "scee.h"
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+
+    // Our plaintext and password.
+    char plaintext[] = "Hello, World!";
+    char password[] = "OddShapelyOak7332";
+
+    // Make enough space for our ciphertext.
+    // Note that crypt_string_get_length will give us the size of the buffer we
+    // need INCLUDING the null character.
+    size_t ct_length = crypt_string_get_length(strlen(plaintext), SCEE_CRYPT_ENCRYPT);
+    char ciphertext[ct_length];
+
+    // Encryption.
+    // The operation places the null character at the end of the buffer for us.
+    int r = encrypt_string(plaintext, strlen(plaintext), password, strlen(password), ciphertext);
+    if (r != SCEE_OK) { return 1; }
+
+    // Output for Encryption.
+    printf("Ciphertext Buffer Size: %zu\n", ct_length);
+    printf("Ciphertext strlen     : %zu\n", strlen(ciphertext));
+    printf("Ciphertext            : %s\n\n", ciphertext);
+
+    // Make enough space for our plaintext again.
+    // Note that because of base64 padding, crypt_string_get_length will
+    // usually tell us that we need more space than we do.  We can get the
+    // actual length of the plaintext after we decrypt.
+    size_t pt_max_length = crypt_string_get_length(strlen(ciphertext), SCEE_CRYPT_DECRYPT);
+    size_t pt_actual_length;
+    char plaintext2[pt_max_length];
+
+    // Decryption.
+    // The operation places the null character at the end of the buffer for us.
+    r = decrypt_string(ciphertext, strlen(ciphertext), password, strlen(password), plaintext2, &pt_actual_length);
+    if (r != SCEE_OK) { return 1; }
+
+    // Output for Decryption.
+    printf("Plaintext Buffer Size: %zu\n", pt_max_length);
+    printf("Plaintext Actual Size: %zu\n", pt_actual_length);
+    printf("Plaintext strlen     : %zu\n", strlen(plaintext));
+    printf("Plaintext            : %s\n\n", plaintext);
+
+    return 0;
+}
+```
