@@ -45,7 +45,7 @@ compatible.
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
 |Python|Tested on v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome), tested with v3.4.7.
 |C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
-|C||Requires OpenSSL libssl-dev.  Only supports `encrypt` and `decrypt` currently, no string methods.|
+|C||Requires OpenSSL libssl-dev.|
 |Visual Basic .NET|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |PHP|PHP 7.1||
 |Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
