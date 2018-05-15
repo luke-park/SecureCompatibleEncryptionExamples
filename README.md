@@ -37,7 +37,7 @@ strings.  The `password` parameter is fed through PBKDF2 first.  `password` can 
 compatible.
 
 ## Dependencies
-|Language|Minimum Version|Dependencies|
+|Language|Minimum Version|Dependencies/Notes|
 |--------|---------------|------------|
 |Java|Java 8 JRE||
 |Kotlin|Java 8 JRE||
@@ -46,6 +46,7 @@ compatible.
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
 |Python|Tested on v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome), tested with v3.4.7.
 |C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
+|C||Requires OpenSSL libssl-dev.  Only supports `encrypt` and `decrypt` currently, no string methods.|
 |Visual Basic .NET|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
 |PHP|PHP 7.1||
 |Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
@@ -63,4 +64,4 @@ The following strings are the results of `encryptString`.  If your implementatio
 |NYzd53moLT|BZO8PUEysY|`SNQHdWnlcmJELLKewNTxBhzmJ1U+ChqKK5Kdvd/FSKssHW5b8y8SOrNVHdm78JUAYpGKlEUD`|
 |vW1Qjb30mt|OziaxPFGYh|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|
 |9z19eFctoZ|gkLDY5mmzT|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|
-|||`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
+|<Empty String>|<Empty String>|`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
