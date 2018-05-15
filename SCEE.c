@@ -8,14 +8,14 @@ size_t b64_get_length(size_t current_size, int operation) {
         return (current_size * 3) / 4;
     }
 }
-int b64_encode(const uint8_t* bytes, size_t length, char* str) {
+int b64_encode(const uint8_t* bytes, size_t length, unsigned char* str) {
     if (!EVP_EncodeBlock(str, bytes, length)) {
         return SCEE_ERROR_B64;
     }
 
     return SCEE_OK;
 }
-int b64_decode(const char* str, size_t length, uint8_t* bytes, size_t* decode_size_out) {
+int b64_decode(const unsigned char* str, size_t length, uint8_t* bytes, size_t* decode_size_out) {
     int pad_count = 0;
     if (str[length - 1] == '=') { pad_count++; }
     if (str[length - 2] == '=') { pad_count++; }
@@ -31,8 +31,8 @@ int b64_decode(const char* str, size_t length, uint8_t* bytes, size_t* decode_si
 }
 
 // PBKDF2.
-int pbkdf2(const char* password, size_t password_length, const uint8_t* salt, size_t salt_length, int iterations, const EVP_MD* digest, uint8_t* key_out, size_t key_length) {
-    if (!PKCS5_PBKDF2_HMAC(password, password_length, salt, salt_length, iterations, digest, key_length, key_out)) {
+int pbkdf2(const unsigned char* password, size_t password_length, const uint8_t* salt, size_t salt_length, int iterations, const EVP_MD* digest, uint8_t* key_out, size_t key_length) {
+    if (!PKCS5_PBKDF2_HMAC((char*)password, password_length, salt, salt_length, iterations, digest, key_length, key_out)) {
         return SCEE_ERROR_PBKDF2;
     }
 
@@ -48,7 +48,7 @@ size_t crypt_string_get_length(size_t current_size, int operation) {
         return temp_length - SCEE_SALT_LENGTH - SCEE_NONCE_LENGTH - SCEE_TAG_LENGTH + 1;
     }
 }
-int encrypt_string(const char* plaintext, size_t plaintext_length, const char* password, size_t password_length, char* ciphertext_out) {
+int encrypt_string(const unsigned char* plaintext, size_t plaintext_length, const unsigned char* password, size_t password_length, unsigned char* ciphertext_out) {
     // Generate a 128-bit salt using a CSPRNG.
     uint8_t salt[SCEE_SALT_LENGTH];
     if (!RAND_bytes(salt, SCEE_SALT_LENGTH)) { return SCEE_ERROR_RAND; }
@@ -71,7 +71,7 @@ int encrypt_string(const char* plaintext, size_t plaintext_length, const char* p
 
     return b64_encode(ciphertext_and_nonce_and_salt, ciphertext_and_nonce_and_salt_length, ciphertext_out);
 }
-int decrypt_string(const char* base64_ciphertext_and_nonce_and_salt, size_t base64_length, const char* password, size_t password_length, char* plaintext_out, size_t* plaintext_length_out) {
+int decrypt_string(const unsigned char* base64_ciphertext_and_nonce_and_salt, size_t base64_length, const unsigned char* password, size_t password_length, unsigned char* plaintext_out, size_t* plaintext_length_out) {
     // Decode the base64.
     size_t actual_size;
     size_t max_size = b64_get_length(base64_length, SCEE_B64_DECODE);

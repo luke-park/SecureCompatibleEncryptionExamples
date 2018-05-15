@@ -43,10 +43,11 @@ compatible.
 |JavaScript (Node)|NodeJS 4.0.0+||
 |JavaScript (Browser)||Requires [base64-js](https://github.com/beatgammit/base64-js) and a browser that supports the Web Crypto API.|
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|
-|Python|Tested on v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome), tested with v3.4.7.
-|C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
-|C||Requires OpenSSL libssl-dev.|
+|Python|Tested on v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome), tested with v3.4.7.|
 |Visual Basic .NET|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
+|C#|.NET 4|Requires `BouncyCastle`, see [this NuGet package](https://www.nuget.org/packages/BouncyCastle/).|
+|C||Requires scee.h and OpenSSL libssl-dev.|
+|C++|C++11|Requires scee.hpp, scee.c, scee.h and OpenSSL libssl-dev.|
 |PHP|PHP 7.1||
 |Swift|Swift 4.0|[SwiftGCM Library](https://github.com/luke-park/SwiftGCM) (single-file), also requires a bridge for CommonCrypto.|
 
@@ -71,14 +72,14 @@ The C example requires a bit more effort to understand and use properly due to v
 int main(int argc, char* argv[]) {
 
     // Our plaintext and password.
-    char plaintext[] = "Hello, World!";
-    char password[] = "OddShapelyOak7332";
+    unsigned char plaintext[] = "Hello, World!";
+    unsigned char password[] = "OddShapelyOak7332";
 
     // Make enough space for our ciphertext.
     // Note that crypt_string_get_length will give us the size of the buffer we
     // need INCLUDING the null character.
     size_t ct_length = crypt_string_get_length(strlen(plaintext), SCEE_CRYPT_ENCRYPT);
-    char ciphertext[ct_length];
+    unsigned char ciphertext[ct_length];
 
     // Encryption.
     // The operation places the null character at the end of the buffer for us.
@@ -96,7 +97,7 @@ int main(int argc, char* argv[]) {
     // actual length of the plaintext after we decrypt.
     size_t pt_max_length = crypt_string_get_length(strlen(ciphertext), SCEE_CRYPT_DECRYPT);
     size_t pt_actual_length;
-    char plaintext2[pt_max_length];
+    unsigned char plaintext2[pt_max_length];
 
     // Decryption.
     // The operation places the null character at the end of the buffer for us.
