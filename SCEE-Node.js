@@ -19,7 +19,7 @@ function encryptString(plaintext, password) {
     let ciphertextAndNonceAndSalt = Buffer.concat([ salt, encrypt(new Buffer(plaintext, "utf8"), key) ]);
 
     // Return as base64 string.
-    return ciphertextAndNonce.toString("base64");
+    return ciphertextAndNonceAndSalt.toString("base64");
 }
 
 function decryptString(base64CiphertextAndNonceAndSalt, password) {

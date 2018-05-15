@@ -14,7 +14,7 @@ code.
 - **PBKDF2 Underlying Hash**: SHA-256
 
 AES with a 128-bit key was chosen due to the Java *Unlimited Strength Policy*
-that requires key sizes of no more than 128-bits due to US law.  While the
+that requires key sizes of no more than 128-bits due to cryptography export laws.  While the
 examples are shown using AES-128, they can be trivially changed to 256-bit AES
 by changing the `ALGORITHM_KEY_SIZE` (and in some cases, `ALGORITHM_NAME`) parameter.
 
@@ -30,8 +30,7 @@ the following:
 - `byte[] decrypt(ciphertext: byte[], key: byte[])`
 
 As is expected, the `encrypt` and `decrypt` methods operate on and return raw
-binary data.  The `*string` methods, however, take string parameters and return
-strings.  The `password` parameter is fed through PBKDF2 first.  `password` can be of any length but `key` must be 128-bits in length.  You can change the AES key size by adjusting the `ALGORITHM_KEY_SIZE` parameter, and in some examples, the `ALGORITHM_NAME` parameter too.
+binary data.  The `*string` methods, however, take string parameters and return base64 encoded strings.  The `password` parameter is fed through PBKDF2 first.  `password` can be of any length but `key` must be 128-bits in length.  You can change the AES key size by adjusting the `ALGORITHM_KEY_SIZE` parameter, and in some examples, the `ALGORITHM_NAME` parameter too.
 
 **NOTE**: Because of the use of PBKDF2, the binary vs string methods are **not**
 compatible.

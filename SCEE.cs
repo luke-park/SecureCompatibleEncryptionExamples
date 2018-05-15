@@ -67,7 +67,7 @@ namespace scee
             rand.NextBytes(nonce);
 
             // Create the cipher instance and initialize.
-            GcmBlockCipher cipher = new GcmBlockCipher(new AesFastEngine());
+            GcmBlockCipher cipher = new GcmBlockCipher(new AesEngine());
             KeyParameter keyParam = ParameterUtilities.CreateKeyParameter(ALGORITHM_NAME, key);
             ParametersWithIV cipherParameters = new ParametersWithIV(keyParam, nonce);
             cipher.Init(true, cipherParameters);
@@ -93,7 +93,7 @@ namespace scee
             Array.Copy(ciphertextAndNonce, nonce.Length, ciphertext, 0, ciphertext.Length);
 
             // Create the cipher instance and initialize.
-            GcmBlockCipher cipher = new GcmBlockCipher(new AesFastEngine());
+            GcmBlockCipher cipher = new GcmBlockCipher(new AesEngine());
             KeyParameter keyParam = ParameterUtilities.CreateKeyParameter(ALGORITHM_NAME, key);
             ParametersWithIV cipherParameters = new ParametersWithIV(keyParam, nonce);
             cipher.Init(false, cipherParameters);
