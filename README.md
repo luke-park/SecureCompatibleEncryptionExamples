@@ -66,7 +66,7 @@ The following strings are the results of `encryptString`.  If your implementatio
 ## C Example
 The C example requires a bit more effort to understand and use properly due to varying buffer sizes with regard to base64 padding.  The example below shows how to use `crypt_string_get_length` to determine what buffer size you will need to allocate to store the result.
 ```c
-#include "scee.h"
+#include "SCEE.h"
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
@@ -76,14 +76,14 @@ int main(int argc, char* argv[]) {
     unsigned char password[] = "OddShapelyOak7332";
 
     // Make enough space for our ciphertext.
-    // Note that crypt_string_get_length will give us the size of the buffer we
+    // Note that scee_crypt_string_get_length will give us the size of the buffer we
     // need INCLUDING the null character.
-    size_t ct_length = crypt_string_get_length(strlen(plaintext), SCEE_CRYPT_ENCRYPT);
+    size_t ct_length = scee_crypt_string_get_length(strlen(plaintext), SCEE_CRYPT_ENCRYPT);
     unsigned char ciphertext[ct_length];
 
     // Encryption.
     // The operation places the null character at the end of the buffer for us.
-    int r = encrypt_string(plaintext, strlen(plaintext), password, strlen(password), ciphertext);
+    int r = scee_encrypt_string(plaintext, strlen(plaintext), password, strlen(password), ciphertext);
     if (r != SCEE_OK) { return 1; }
 
     // Output for Encryption.
@@ -92,16 +92,16 @@ int main(int argc, char* argv[]) {
     printf("Ciphertext            : %s\n\n", ciphertext);
 
     // Make enough space for our plaintext again.
-    // Note that because of base64 padding, crypt_string_get_length will
+    // Note that because of base64 padding, scee_crypt_string_get_length will
     // usually tell us that we need more space than we do.  We can get the
     // actual length of the plaintext after we decrypt.
-    size_t pt_max_length = crypt_string_get_length(strlen(ciphertext), SCEE_CRYPT_DECRYPT);
+    size_t pt_max_length = scee_crypt_string_get_length(strlen(ciphertext), SCEE_CRYPT_DECRYPT);
     size_t pt_actual_length;
     unsigned char plaintext2[pt_max_length];
 
     // Decryption.
     // The operation places the null character at the end of the buffer for us.
-    r = decrypt_string(ciphertext, strlen(ciphertext), password, strlen(password), plaintext2, &pt_actual_length);
+    r = scee_decrypt_string(ciphertext, strlen(ciphertext), password, strlen(password), plaintext2, &pt_actual_length);
     if (r != SCEE_OK) { return 1; }
 
     // Output for Decryption.
