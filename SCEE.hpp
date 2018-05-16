@@ -1,6 +1,9 @@
+#ifndef __SCEE_HPP
+#define __SCEE_HPP
+
 #include <string>
 #include <vector>
-#include "scee.h"
+#include "SCEE.h"
 
 class SCEE {
 public:
@@ -12,3 +15,5 @@ public:
 private:
     SCEE() {}
 };
+
+#endif

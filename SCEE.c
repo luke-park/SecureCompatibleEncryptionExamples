@@ -1,4 +1,4 @@
-#include "scee.h"
+#include "SCEE.h"
 
 // Base64.
 size_t b64_get_length(size_t current_size, int operation) {

@@ -1,3 +1,6 @@
+#ifndef __SCEE_H
+#define __SCEE_H
+
 #include <openssl/evp.h>
 #include <openssl/rand.h>
 #include <stdio.h>
@@ -46,3 +49,5 @@ int decrypt_string(const unsigned char* base64_ciphertext_and_nonce_and_salt, si
 // Encrypt/Decrypt.
 int encrypt(const uint8_t* plaintext, size_t plaintext_length, const uint8_t* key, uint8_t* ciphertext_and_nonce);
 int decrypt(const uint8_t* ciphertext_and_nonce, size_t ciphertext_and_nonce_length, const uint8_t* key, uint8_t* plaintext);
+
+#endif
