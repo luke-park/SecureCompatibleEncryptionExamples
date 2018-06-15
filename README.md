@@ -5,7 +5,7 @@ This repository was created to address the ever-growing number of poor
 encryption code examples that float about the internet.  This repository will
 expand over time to include examples in more languages.
 
-As of May 2018, there are **13** different compatible examples for **12**
+As of May 2018, there are **14** different compatible examples for **13**
 different languages across **5** different platforms.
 
 ## Algorithms
@@ -43,7 +43,8 @@ compatible.
 |JavaScript (Node)|NodeJS 8.4.0||Tested on 8.4.0, but supported in versions as early as 4.0.0|
 |JavaScript (Browser)||Requires [base64-js](https://github.com/beatgammit/base64-js).|Uses the WebCrypto API, ensure browser support before using this example.|
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|Tested on 1.9 but supported in earlier versions.|
-|Python|v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome), tested with v3.4.7.|No support for Python 2.|
+|Python|v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome)|No support for Python 2.|
+|Ruby|v2.4.4|Uses the [OpenSSL Gem](https://rubygems.org/gems/openssl/versions/2.0.0.beta.1)||
 |Visual Basic .NET|.NET 4.5|Requires [BouncyCastle](https://www.nuget.org/packages/BouncyCastle/).||
 |C#|.NET 4.5|Requires [BouncyCastle](https://www.nuget.org/packages/BouncyCastle/).||
 |C||Requires OpenSSL libssl-dev.|Uses `SCEE.h` header file.|
