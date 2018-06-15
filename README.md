@@ -53,7 +53,7 @@ compatible.
 |Swift|Swift 4.0|Requires [SwiftGCM](https://github.com/luke-park/SwiftGCM).|Must use a bridge for CommonCrypto.|
 |PHP|Requires PHP 7||Uses `random_bytes` which requires PHP 7.|
 
-### Test Vectors
+## Test Vectors
 The following strings are the results of `encryptString`.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the test vectors below, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
 
 | Plaintext | Password | Result |
