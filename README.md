@@ -5,7 +5,7 @@ This repository was created to address the ever-growing number of poor
 encryption code examples that float about the internet.  This repository will
 expand over time to include examples in more languages.
 
-As of May 2018, there are **14** different compatible examples for **13**
+As of August 2018, there are **15** different compatible examples for **13**
 different languages across **5** different platforms.
 
 ## Algorithms
