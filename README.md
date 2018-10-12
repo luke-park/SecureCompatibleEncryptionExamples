@@ -5,7 +5,7 @@ This repository was created to address the ever-growing number of poor
 encryption code examples that float about the internet.  This repository will
 expand over time to include examples in more languages.
 
-As of August 2018, there are **16** different compatible examples for **14**
+As of October 2018, there are **16** different compatible examples for **14**
 different languages across **5** different platforms.
 
 ## Algorithms
@@ -41,16 +41,16 @@ compatible.
 |Java|Java 8 JRE|||
 |Kotlin|Java 8 JRE|||
 |JavaScript (Node)|NodeJS 8.4.0||Tested on 8.4.0, but supported in versions as early as 4.0.0|
-|JavaScript (Browser)||Requires [base64-js](https://github.com/beatgammit/base64-js).|Uses the WebCrypto API, ensure browser support before using this example.|
+|JavaScript (Browser)||Requires [base64-js](https://github.com/beatgammit/base64-js)|Uses the WebCrypto API, ensure browser support before using this example.|
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|Tested on 1.9 but supported in earlier versions.|
 |Python|v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome)|No support for Python 2.|
 |Ruby|v2.4.4|Uses the [OpenSSL Gem](https://rubygems.org/gems/openssl/versions/2.0.0.beta.1)||
 |Visual Basic .NET|.NET 4.5|Requires [BouncyCastle](https://www.nuget.org/packages/BouncyCastle/).||
 |C#|.NET 4.5|Requires [BouncyCastle](https://www.nuget.org/packages/BouncyCastle/).||
-|C||Requires OpenSSL libssl-dev.|Uses `SCEE.h` header file.|
-|C++|Requires C++11 Compiler|Requires OpenSSL libssl-dev.|Wrapper for the C example.  Requires `SCEE.h` and `SCEE_cpp.h`|
-|Objective-C||Requires OpenSSL libssl-dev.|Wrapper for the C example.  Requires `SCEE.h` and `SCEE_objc.h`|
-|Rust|v1.30.0|ring v0.13.2, base64 v0.9.3||
+|C||Requires OpenSSL libssl-dev|Uses `SCEE.h` header file.|
+|C++|Requires C++11 Compiler|Requires OpenSSL libssl-dev|Wrapper for the C example.  Requires `SCEE.h` and `SCEE_cpp.h`|
+|Objective-C||Requires OpenSSL libssl-dev|Wrapper for the C example.  Requires `SCEE.h` and `SCEE_objc.h`|
+|Rust|v1.30.0|Requires the ring v0.13.2 and base64 v0.9.3 crates||
 |Swift|Swift 4.0|Requires [SwiftGCM](https://github.com/luke-park/SwiftGCM).|Must use a bridge for CommonCrypto.|
 |PHP|Requires PHP 7||Uses `random_bytes` which requires PHP 7.|
 
