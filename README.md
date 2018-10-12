@@ -5,7 +5,7 @@ This repository was created to address the ever-growing number of poor
 encryption code examples that float about the internet.  This repository will
 expand over time to include examples in more languages.
 
-As of August 2018, there are **15** different compatible examples for **13**
+As of August 2018, there are **16** different compatible examples for **14**
 different languages across **5** different platforms.
 
 ## Algorithms
@@ -50,6 +50,7 @@ compatible.
 |C||Requires OpenSSL libssl-dev.|Uses `SCEE.h` header file.|
 |C++|Requires C++11 Compiler|Requires OpenSSL libssl-dev.|Wrapper for the C example.  Requires `SCEE.h` and `SCEE_cpp.h`|
 |Objective-C||Requires OpenSSL libssl-dev.|Wrapper for the C example.  Requires `SCEE.h` and `SCEE_objc.h`|
+|Rust|v1.30.0|ring v0.13.2, base64 v0.9.3||
 |Swift|Swift 4.0|Requires [SwiftGCM](https://github.com/luke-park/SwiftGCM).|Must use a bridge for CommonCrypto.|
 |PHP|Requires PHP 7||Uses `random_bytes` which requires PHP 7.|
 
