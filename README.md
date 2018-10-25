@@ -55,16 +55,16 @@ compatible.
 |PHP|Requires PHP 7||Uses `random_bytes` which requires PHP 7.|
 
 ## Test Vectors
-The following strings are the results of `encryptString`.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the test vectors below, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
+The following ciphertexts are the results of `encryptString` using the given password.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the ciphertexts below to the same given result, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
 
-| Plaintext | Password | Result |
+| Ciphertext | Password | Result after `decryptString` |
 |-----------|----------|--------|
-|XCbJbjd72q|DTY62mV2Cv|`CqjxsXq6Y5ebtW6w98UQfgwdOpaCCkCy0l1qK5gJfhZnKVhp4+OuvxoiigHi8mO1R8CAyl5t`|
-|SOJHSCm4qR|Pl4WODjq4k|`VtHh3Z6jqJpIDK0yLe4+/UNpxqBqcmaiJWmaecb7qfCyOlAcVJ973zBNM51VCup5UTuVlu3H`|
-|NYzd53moLT|BZO8PUEysY|`SNQHdWnlcmJELLKewNTxBhzmJ1U+ChqKK5Kdvd/FSKssHW5b8y8SOrNVHdm78JUAYpGKlEUD`|
-|vW1Qjb30mt|OziaxPFGYh|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|
-|9z19eFctoZ|gkLDY5mmzT|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|
-|*Empty String*|*Empty String*|`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|
+|`CqjxsXq6Y5ebtW6w98UQfgwdOpaCCkCy0l1qK5gJfhZnKVhp4+OuvxoiigHi8mO1R8CAyl5t`|XCbJbjd72q|DTY62mV2Cv|
+|`VtHh3Z6jqJpIDK0yLe4+/UNpxqBqcmaiJWmaecb7qfCyOlAcVJ973zBNM51VCup5UTuVlu3H`|SOJHSCm4qR|Pl4WODjq4k|
+|`SNQHdWnlcmJELLKewNTxBhzmJ1U+ChqKK5Kdvd/FSKssHW5b8y8SOrNVHdm78JUAYpGKlEUD`|NYzd53moLT|BZO8PUEysY|
+|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|vW1Qjb30mt|OziaxPFGYh|
+|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|9z19eFctoZ|gkLDY5mmzT|
+|`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|*Empty String*|*Empty String*|
 
 ## C Example
 The C example requires a bit more effort to understand and use properly due to varying buffer sizes with regard to base64 padding.  The example below shows how to use `crypt_string_get_length` to determine what buffer size you will need to allocate to store the result.
