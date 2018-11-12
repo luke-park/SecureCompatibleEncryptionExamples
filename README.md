@@ -57,13 +57,13 @@ compatible.
 ## Test Vectors
 The following ciphertexts are the results of `encryptString` using the given password.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the ciphertexts below to the same given result, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
 
-| Ciphertext | Password | Result after `decryptString` |
+| Ciphertext | Password | Plaintext |
 |-----------|----------|--------|
-|`CqjxsXq6Y5ebtW6w98UQfgwdOpaCCkCy0l1qK5gJfhZnKVhp4+OuvxoiigHi8mO1R8CAyl5t`|XCbJbjd72q|DTY62mV2Cv|
-|`VtHh3Z6jqJpIDK0yLe4+/UNpxqBqcmaiJWmaecb7qfCyOlAcVJ973zBNM51VCup5UTuVlu3H`|SOJHSCm4qR|Pl4WODjq4k|
-|`SNQHdWnlcmJELLKewNTxBhzmJ1U+ChqKK5Kdvd/FSKssHW5b8y8SOrNVHdm78JUAYpGKlEUD`|NYzd53moLT|BZO8PUEysY|
-|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|vW1Qjb30mt|OziaxPFGYh|
-|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|9z19eFctoZ|gkLDY5mmzT|
+|`CqjxsXq6Y5ebtW6w98UQfgwdOpaCCkCy0l1qK5gJfhZnKVhp4+OuvxoiigHi8mO1R8CAyl5t`|DTY62mV2Cv|XCbJbjd72q|
+|`VtHh3Z6jqJpIDK0yLe4+/UNpxqBqcmaiJWmaecb7qfCyOlAcVJ973zBNM51VCup5UTuVlu3H`|Pl4WODjq4k|SOJHSCm4qR|
+|`SNQHdWnlcmJELLKewNTxBhzmJ1U+ChqKK5Kdvd/FSKssHW5b8y8SOrNVHdm78JUAYpGKlEUD`|BZO8PUEysY|NYzd53moLT|
+|`5EmCwwSWj6YYgxBlld6DFW8I+QXCWxz5g/laEwUYV/DuoCGvxbW4ZlMd1Tsj4N07WbBOhIJU`|OziaxPFGYh|vW1Qjb30mt|
+|`7miUNuhjJPAlbIHYKA2v/iBH3aplFF0pGw6HQAD5tKluh/1M69MLQ9xIkVcGfTr0CycsTFLU`|gkLDY5mmzT|9z19eFctoZ|
 |`0iqwbC8/1YvTsl2dog6aXaGfXVypsv1BcbnDE06C7nl9REITn3NW18+ZUmc=`|*Empty String*|*Empty String*|
 
 ## C Example
