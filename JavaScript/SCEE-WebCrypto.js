@@ -4,27 +4,23 @@ const ALGORITHM_KEY_SIZE = 16 * 8;
 const PBKDF2_SALT_SIZE = 16;
 const PBKDF2_ITERATIONS = 32767;
 
-function encryptString(plaintext, password) {
+async function encryptString(plaintext, password) {
     // Generate a 128-bit salt using a CSPRNG and a nonce.
     let salt = crypto.getRandomValues(new Uint8Array(PBKDF2_SALT_SIZE));
     let nonce = crypto.getRandomValues(new Uint8Array(ALGORITHM_NONCE_SIZE));
     let aesGcm = { name: ALGORITHM_NAME, iv: nonce };
+		
+	// Derive a key using PBKDF2.
+	let deriveParams = { name: "PBKDF2", salt: salt, iterations: PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
+	let rawKey = await crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"]);
+	let cryptoKey = await crypto.subtle.deriveKey(deriveParams, rawKey, { name: ALGORITHM_NAME, length: ALGORITHM_KEY_SIZE }, true, ["encrypt"]);
 
-    // Derive a key using PBKDF2.
-    return crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"])
-        .then((rawKey) => {
-            let deriveParams = { name: "PBKDF2", salt: salt, iterations: PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
-            return crypto.subtle.deriveKey(deriveParams, rawKey, { name: ALGORITHM_NAME, length: ALGORITHM_KEY_SIZE }, true, ["encrypt"])
-        })
-        .then((cryptoKey) => {
-            return encryptWithCryptoKey(aesGcm, (new TextEncoder()).encode(plaintext), cryptoKey)
-        })
-        .then((ciphertext) => {
-            return base64js.fromByteArray(joinBuffers(salt, ciphertext));
-        });
+	// Encrypt the string.
+	let ciphertext = await encryptWithCryptoKey(aesGcm, (new TextEncoder()).encode(plaintext), cryptoKey);
+	return base64js.fromByteArray(joinBuffers(salt, ciphertext));
 }
 
-function decryptString(base64CiphertextAndNonceAndSalt, password) {
+async function decryptString(base64CiphertextAndNonceAndSalt, password) {
     // Decode the base64.
     let ciphertextAndNonceAndSalt = base64js.toByteArray(base64CiphertextAndNonceAndSalt);
 
@@ -34,42 +30,33 @@ function decryptString(base64CiphertextAndNonceAndSalt, password) {
     let ciphertext = ciphertextAndNonceAndSalt.slice(PBKDF2_SALT_SIZE + ALGORITHM_NONCE_SIZE);
     let aesGcm = { name: ALGORITHM_NAME, iv: nonce };
 
-    // Derive the key using PBKDF2.
-    return crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"])
-        .then((rawKey) => {
-            let deriveParams = { name: "PBKDF2", salt: salt, iterations: PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
-            return crypto.subtle.deriveKey(deriveParams, rawKey, { name: ALGORITHM_NAME, length: ALGORITHM_KEY_SIZE }, true, ["decrypt"])
-        })
-        .then((cryptoKey) => {
-            return decryptWithCryptoKey(aesGcm, ciphertext, cryptoKey)
-        })
-        .then((plaintext) => {
-            return (new TextDecoder()).decode(plaintext);
-        });
+	// Derive the key using PBKDF2.
+	let deriveParams = { name: "PBKDF2", salt: salt, iterations: PBKDF2_ITERATIONS, hash: { name: "SHA-256" } };
+	let rawKey = await crypto.subtle.importKey("raw", (new TextEncoder()).encode(password), { name: "PBKDF2" }, false, ["deriveKey", "deriveBits"]);
+	let cryptoKey = await crypto.subtle.deriveKey(deriveParams, rawKey, { name: ALGORITHM_NAME, length: ALGORITHM_KEY_SIZE }, true, ["decrypt"]);
+
+	// Decrypt the string.
+	let plaintext = await decryptWithCryptoKey(aesGcm, ciphertext, cryptoKey);
+	return (new TextDecoder()).decode(plaintext);
 }
 
-function encrypt(plaintext, key) {
+async function encrypt(plaintext, key) {
     // Generate a 96-bit nonce using a CSPRNG.
     let nonce = crypto.getRandomValues(new Uint8Array(ALGORITHM_NONCE_SIZE));
     let aesGcm = { name: ALGORITHM_NAME, iv: nonce };
-
-    // Create a 'CryptoKey'.
-    return crypto.subtle.importKey("raw", key, aesGcm, false, ["encrypt"])
-        .then((cryptoKey) => {
-            encryptWithCryptoKey(aesGcm, plaintext, cryptoKey)
-        })
-        .then((ciphertextAndNonce) => {
-            return ciphertextAndNonce;
-        });
+		
+	// Create a 'CryptoKey'.
+	let cryptoKey = await crypto.subtle.importKey("raw", key, aesGcm, false, ["encrypt"]);
+	
+	// Encrypt.
+	return await encryptWithCryptoKey(aesGcm, plaintext, cryptoKey);
 }
-function encryptWithCryptoKey(aesGcm, plaintext, cryptoKey) {
-    return crypto.subtle.encrypt(aesGcm, cryptoKey, plaintext)
-        .then((ciphertext) => {
-            return joinBuffers(aesGcm.iv, new Uint8Array(ciphertext));
-        });
+async function encryptWithCryptoKey(aesGcm, plaintext, cryptoKey) {
+	let ciphertext = await crypto.subtle.encrypt(aesGcm, cryptoKey, plaintext);
+	return joinBuffers(aesGcm.iv, new Uint8Array(ciphertext));
 }
 
-function decrypt(ciphertextAndNonce, key) {
+async function decrypt(ciphertextAndNonce, key) {
     // Create buffers of the nonce and ciphertext.
     let nonce = ciphertextAndNonce.slice(0, ALGORITHM_NONCE_SIZE);
     let ciphertext = ciphertextAndNonce.slice(ALGORITHM_NONCE_SIZE);
@@ -77,19 +64,14 @@ function decrypt(ciphertextAndNonce, key) {
     let aesGcm = { name: ALGORITHM_NAME, iv: nonce };
 
     // Create the 'CryptoKey'.
-    return crypto.subtle.importKey("raw", key, aesGcm, false, ["decrypt"])
-        .then((cryptoKey) => {
-            return decryptWithCryptoKey(aesGcm, ciphertext, cryptoKey)
-        })
-        .then((plaintext) => {
-            return plaintext;
-        });
+	let cryptoKey = await crypto.subtle.importKey("raw", key, aesGcm, false, ["decrypt"]);
+
+	// Decrypt.
+	return await decryptWithCryptoKey(aesGcm, ciphertext, cryptoKey)
 }
-function decryptWithCryptoKey(aesGcm, ciphertext, cryptoKey) {
-    return crypto.subtle.decrypt(aesGcm, cryptoKey, ciphertext)
-        .then((plaintext) => {
-            return new Uint8Array(plaintext);
-        });
+async function decryptWithCryptoKey(aesGcm, ciphertext, cryptoKey) {
+	let plaintext = await crypto.subtle.decrypt(aesGcm, cryptoKey, ciphertext);
+	return new Uint8Array(plaintext);
 }
 
 function joinBuffers(a, b) {
