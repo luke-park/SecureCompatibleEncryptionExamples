@@ -42,6 +42,7 @@ compatible.
 |Kotlin|Java 8 JRE|||
 |JavaScript (Node)|NodeJS 8.4.0||Tested on 8.4.0, but supported in versions as early as 4.0.0|
 |JavaScript (Browser)||Requires [base64-js](https://github.com/beatgammit/base64-js)|Uses the WebCrypto API, ensure browser support before using this example.|
+|JavaScript (SJCL)||Requires the [Stanford JavaScript Crypto Library](https://github.com/bitwiseshiftleft/sjcl)|Doesn't run asynchronously.|
 |Go|Go 1.9|`golang.org/x/crypto/pbkdf2`|Tested on 1.9 but supported in earlier versions.|
 |Python|v3.6.4|Requires [PyCryptodome](https://github.com/Legrandin/pycryptodome)|No support for Python 2.|
 |Ruby|v2.4.4|Uses the [OpenSSL Gem](https://rubygems.org/gems/openssl/versions/2.0.0.beta.1)||
