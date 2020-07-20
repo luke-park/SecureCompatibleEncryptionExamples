@@ -54,6 +54,7 @@ compatible.
 |Rust|v1.30.0|Requires the ring v0.13.2 and base64 v0.9.3 crates||
 |Swift|Swift 4.0|Requires [SwiftGCM](https://github.com/luke-park/SwiftGCM).|Must use a bridge for CommonCrypto.|
 |PHP|Requires PHP 7||Uses `random_bytes` which requires PHP 7.|
+|Perl|Perl 5|Requires [CryptX](https://metacpan.org/pod/CryptX)||
 
 ## Test Vectors
 The following ciphertexts are the results of `encryptString` using the given password.  If your implementation can `encryptString` and `decryptString` using the code you've written, and can also `decryptString` the ciphertexts below to the same given result, then it is suitable for inclusion in this repository.  Recall that, due to a randomly generated salt and nonce, the following are not expected outputs for `encryptString`, they are for testing `decryptString` only.
